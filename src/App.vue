@@ -4,7 +4,7 @@
   <!-- <CochesComponent/> -->
   <!-- <CustomersComponent/> -->
   <!-- <EmpleadosComponent/> -->
-  <HomeComponent/>
+  <MenuComponent/>
   <router-view></router-view>
   
 </template>
@@ -14,7 +14,7 @@
 // import CochesComponent from './components/CochesComponent.vue'
 //import CustomersComponent from './components/CustomersComponent.vue'
 //import EmpleadosComponent from './components/EmpleadosComponent.vue'
-import HomeComponent from './components/HomeComponent.vue'
+import MenuComponent from './components/MenuComponent.vue'
 
 export default {
   name: 'App',
@@ -23,7 +23,7 @@ export default {
     // CochesComponent
     //CustomersComponent
     //EmpleadosComponent
-    HomeComponent
+    MenuComponent
   }
 }
 </script>

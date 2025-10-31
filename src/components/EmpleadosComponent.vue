@@ -4,7 +4,7 @@
     <div class="hypnosis-spiral"></div>
     
     <div class="content-wrapper">
-    <!-- <table class="table table-bordered table-hover table-info ta">
+    <table class="table table-bordered table-hover table-info ta">
         <thead>
             <tr>
                 <th>Apellido</th>
@@ -21,7 +21,7 @@
                 <td>{{empleado.departamento}}</td>
             </tr>
         </tbody>
-    </table> -->
+    </table>
     <form>
         <label>Seleccione un empleado</label>
         <select class="form control" v-model="idEmpleado">
@@ -57,9 +57,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Global from '../Global'
-let url = Global.urlEmpleados
+import ServiceEmpleados from '../services/ServiceEmpleados'
+const service = new ServiceEmpleados()
 export default {
     name:"EmpleadosComponent",
     data(){
@@ -71,18 +70,14 @@ export default {
     },
     methods: {
         findEmpleado(){
-            let request = "api/empleados/" + this.idEmpleado;
-            let urla = url + request;
-            axios.get(urla).then(response => {
-                console.log("Buscando empleado")
-                this.empleado = response.data;
+            service.findEmpleado(this.idEmpleado).then(res => {
+              this.empleado = res
             })
         }
     },
     mounted(){
-        let request = 'api/Empleados';
-        axios.get(url+request).then(res=>{
-            this.empleados=res.data
+        service.getEmpleados().then(res=> {
+          this.empleados = res
         })
     }
 }

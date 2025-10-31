@@ -63,10 +63,8 @@
 </template>
 
 <script>
-import axios from "axios"
-import Global from '../Global'
-let urlApi = Global.url
-
+import ServiceCoches from '../services/ServiceCoches'
+const service = new ServiceCoches();
 export default {
     name:"CochesComponent",
     data(){
@@ -75,11 +73,10 @@ export default {
         }
     },
     mounted(){
-        let request= "webresources/coches";
-        axios.get(urlApi+request).then(res => {
-            this.coches= res.data
-            console.log(this.coches )
-        })
+      //Una promesa no es un metodo, es un objeto
+        service.getCoches().then(res=>{
+          this.coches = res
+        });
     }
 }
 </script>
